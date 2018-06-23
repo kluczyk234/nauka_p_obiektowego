@@ -5,18 +5,14 @@
 #include <windows.h>
 #include <conio.h>
 #include <vector>
-#include "Base.h"
-
+#include <list>
+#pragma once
 using namespace std;
 
-class Kolejka :public Wirtualna
+class Wczytanie
 {
+    int x;
 public:
-    int ile;
-    int glowa;
-    int ogon;
-    vector<float>dane;
-    virtual void wyswietl();
     float wczytanie_wartosci();
     int wybor_wartosci();
 };

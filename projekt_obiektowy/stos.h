@@ -1,23 +1,20 @@
 #include <iostream>
 #include <cstdlib>
+#include <stdio.h>
 #include <math.h>
-#include <vector>
 #include <windows.h>
+#include <conio.h>
+#include <vector>
+#include "Base.h"
 
 using namespace std;
 
-class Wirtualna
-{
-public:
-    virtual void wyswietl()=0;
-    //czysta funkcja wirtualna
-};
 class Stos :public Wirtualna
 {
-    public:
-        int liczba;
+public:
     int rozmiar;
-        int wybor;
     vector<float>dane;
     virtual void wyswietl();
+    float wczytanie_wartosci();
+    int wybor_wartosci();
 };

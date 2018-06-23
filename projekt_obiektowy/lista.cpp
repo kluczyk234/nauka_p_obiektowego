@@ -1,22 +1,22 @@
 #include <iostream>
-#include <list>
+#include <cstdlib>
+#include <stdio.h>
+#include <math.h>
 #include <windows.h>
-
+#include <conio.h>
+#include <list>
+#include "lista.h"
 using namespace std;
 
-list <int> lista; //utworzenie listy przechowujacej liczby calkowite
-int wybor;
 
-//---------------------
-
-void wyswietl()
+void wyswietl_liste(list<float>&lista)
 {
     system("CLS");
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),10);
     cout<<" ZAWARTOSC LISTY: "<<endl;
     cout<<"---------------------------"<<endl;
 
-    for(list<int>::iterator i=lista.begin(); i!= lista.end(); ++i)
+    for(list<float>::iterator i=lista.begin(); i!= lista.end(); ++i)
         cout<<*i<<" ";
 
     cout<<endl;
@@ -26,61 +26,77 @@ void wyswietl()
 
 //-------- 1 ------------
 
-void push_front()
+void push_front(list<float>&lista)
 {
-    int liczba;
-    cout<<"Podaj jaka liczbe wstawic na pocz\245tek listy: ";
-    cin>>liczba;
-    lista.push_front(liczba);
+    float z=0;
+    do
+    {
+        Wczytanie wartosc;
+        cout<<"Podaj jaka liczbe wstawic na poczatek listy: ";
+        z=wartosc.wczytanie_wartosci();
+        lista.push_front(z);
+    }
+    while(z==1234);
+    cin.clear();
+    cin.sync();
+    system("CLS");
 }
 
 //--------- 2 -----------
 
-void push_back()
+void push_back(list<float>&lista)
 {
-    int liczba;
+    float z=0;
+    do
+    {
+        Wczytanie wartosc;
     cout<<"Podaj jaka liczbe wstawic na koniec listy: ";
-    cin>>liczba;
-    lista.push_back(liczba);
+        z=wartosc.wczytanie_wartosci();
+    lista.push_back(z);
+    }
+    while(z==1234);
+    cin.clear();
+    cin.sync();
+    system("CLS");
 }
 
 //---------- 3 ---------
 
-void pop_front()
+void pop_front(list<float>&lista)
 {
-    cout<<"Nast\245pi usuni\251cie liczby z pocz\245tku listy";
+    cout<<"Nastapi usuniecie liczby z poczatku listy";
     Sleep(2000);
     lista.pop_front();
 }
 
 //---------- 4 ---------
 
-void pop_back()
+void pop_back(list<float>&lista)
 {
-    cout<<"Nast\245pi usuni\251cie liczby z konca listy";
+    cout<<"Nastapi usuniecie liczby z konca listy";
     Sleep(2000);
     lista.pop_back();
 }
 
 //---------- 5 ----------
 
-void size()
+void size(list<float>&lista)
 {
-    cout<<"Liczb na li\230cie: "<<lista.size();
+    cout<<"Liczby na liscie: "<<lista.size();
     Sleep(2000);
 }
 
 //---------- 6 ----------
 
-void max_size()
+void max_size(list<float>&lista)
 {
-    cout<<"Max liczb na li\230cie: "<<lista.max_size();
+    cout<<"Max liczb na liscie: "<<lista.max_size();
     Sleep(5000);
 }
 
 //---------- 7 ----------
 
-void empty()
+void empty(list<float>&lista)
 {
     cout<<"Czy lista pusta? -> ";
     if (lista.empty()==1) cout<<"TRUE";
@@ -90,17 +106,25 @@ void empty()
 
 //---------- 8 ----------
 
-void remove()
+void remove(list<float>&lista)
 {
-    int liczba;
+    float z=0;
+    do
+    {
+        Wczytanie wartosc;
     cout<<"Usun z listy wszystkie liczby rowne: ";
-    cin>>liczba;
-    lista.remove(liczba);
+        z=wartosc.wczytanie_wartosci();
+    lista.remove(z);
+    }
+    while(z==1234);
+    cin.clear();
+    cin.sync();
+    system("CLS");
 }
 
 //---------- 9 ----------
 
-void sort()
+void sort(list<float>&lista)
 {
     cout<<"Nastapi posortowanie listy! ";
     lista.sort();
@@ -109,31 +133,25 @@ void sort()
 
 //---------- 10 ----------
 
-void reverse()
+void reverse(list<float>&lista)
 {
     cout<<"Nastapi odwrocenie kolejnosci liczb!";
     lista.reverse();
     Sleep(2000);
 }
 
-//---------- 11 ----------
-
-void exit()
+void Lista::wyswietl()
 {
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),12);
-    cout<<"Koniec programu!";
-    Sleep(2000);
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),0);
-}
-//------------------------
-
-int main()
-{
+    cin.clear();
+    cin.sync();
+    system("CLS");
+    Wczytanie wartosc_lista;
+    list<float>lista;
 
     do
     {
 
-        wyswietl();
+        wyswietl_liste(lista);
 
         cout << " MENU GLOWNE LISTY:"<<endl;
         cout << "---------------------------"<<endl;
@@ -149,53 +167,70 @@ int main()
         cout << "10. reverse"<<endl;
         cout << "11. exit"<<endl;
         cout << "---------------------------"<<endl;
-        cout << "Wybor: ";
-        cin >> wybor;
 
-        switch (wybor)
+        switch (wartosc_lista.wybor_wartosci())
         {
         case 1:
-            push_front();
+            push_front(lista);
+            wybor=999;
             break;
         case 2:
-            push_back();
+            push_back(lista);
+            wybor=999;
             break;
         case 3:
-            pop_front();
+            pop_front(lista);
+            wybor=999;
             break;
         case 4:
-            pop_back();
+            pop_back(lista);
+            wybor=999;
             break;
         case 5:
-            size();
+            size(lista);
+            wybor=999;
             break;
         case 6:
-            max_size();
+            max_size(lista);
+            wybor=999;
             break;
         case 7:
-            empty();
+            empty(lista);
+            wybor=999;
             break;
         case 8:
-            remove();
+            remove(lista);
+            wybor=999;
             break;
         case 9:
-            sort();
+            sort(lista);
+            wybor=999;
             break;
         case 10:
-            reverse();
+            reverse(lista);
+            wybor=999;
             break;
         case 11:
-            exit();
+            wybor=11;
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),12);
+            cout<<"Teraz nastapi powrot do MENU GLOWNEGO"<<endl;
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15);
+            cout<< endl <<"Aby kontynuowac nacisnij enter "<<endl;
+            cin.clear();
+            cin.sync();
+            getchar();
             break;
-
         default:
-            cout<<"POMYLKA!";
-            Sleep(2000);
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),12);
+            cout<< "Nie ma takiej opcji w menu";
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15);
+            Sleep(1000);
+            wybor=999;
             break;
         }
-
     }
-    while(wybor!=11);
-
-    return 0;
+    while(wybor != 11);
+    cin.clear();
+    cin.sync();
+    system("CLS");
 }
