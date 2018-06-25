@@ -14,7 +14,6 @@ class Wirtualna :public Wczytanie
 {
 public:
     int wybor;
-    int liczba;
     virtual void wyswietl()=0;
     //czysta funkcja wirtualna
 };

@@ -155,16 +155,16 @@ void Lista::wyswietl()
 
         cout << " MENU GLOWNE LISTY:"<<endl;
         cout << "---------------------------"<<endl;
-        cout << "1.  push_front"<<endl;
-        cout << "2.  push_back"<<endl;
-        cout << "3.  pop_front"<<endl;
-        cout << "4.  pop_back"<<endl;
-        cout << "5.  size"<<endl;
-        cout << "6.  max_size"<<endl;
-        cout << "7.  empty"<<endl;
-        cout << "8.  remove"<<endl;
-        cout << "9.  sort"<<endl;
-        cout << "10. reverse"<<endl;
+        cout << "1.  push_front (dodaje elememt na poczatku listy)"<<endl;
+        cout << "2.  push_back (dodaje element na koncu listy)"<<endl;
+        cout << "3.  pop_front (usuwa element z poczatku listy)"<<endl;
+        cout << "4.  pop_back (usuwa element z konca listy)"<<endl;
+        cout << "5.  size (zwraca liczbe elemetow listy)"<<endl;
+        cout << "6.  max_size (maksymalna liczba elementow jakie moze zmiescic lista)"<<endl;
+        cout << "7.  empty (sprawdza czy lista jest pusta)"<<endl;
+        cout << "8.  remove (usuwa wszystkie elementy o podanej wartosci)"<<endl;
+        cout << "9.  sort (uk³ada elementy rosnaczo)"<<endl;
+        cout << "10. reverse (odwraca kolejnosc elementow)"<<endl;
         cout << "11. exit"<<endl;
         cout << "---------------------------"<<endl;
 

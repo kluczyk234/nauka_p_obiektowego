@@ -1,11 +1,14 @@
 #include <iostream>
+#include <cstdlib>
+#include <stdio.h>
+#include <math.h>
 #include <windows.h>
+#include <conio.h>
+#include <vector>
+#include "drzewo_binarne.h"
 
 using namespace std;
 
-//---------------------- ZMIENNE GLOBALNE----------------------------
-int wybor;
-int *korzen;
 
 //-------- VOID USTAWIAJACY KURSOR W MIEJSCU X,Y NA EKRANIE --------
 
@@ -17,14 +20,9 @@ void gotoxy(int x, int y)
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),c);
 }
 
-//-------------------------- ZMIENNE ------------------------------
-
-int dane[16];
-bool pusty[16];
-
 
 //----------------------- WYSWIETLANIE DRZEWA -----------------------
-void wyswietl_drzewo()
+void wyswietl_drzewo(vector<bool>&pusty, vector <float> &dane)
 {
     system("CLS");
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),14);
@@ -79,11 +77,12 @@ void wyswietl_drzewo()
 }
 
 //------------------- DODAJ LICZBE DO DRZEWA ------------------------
-void add()
+void add(vector<bool>&pusty, vector <float> &dane, int &wezel, float &liczba, float* korzen)
 {
-    int liczba;
+        Wczytanie wartosc_dodana;
+        //float z=0;
     cout<<"Jaka liczbe dodac do drzewa: ";
-    cin>>liczba;
+        liczba=wartosc_dodana.wczytanie_wartosci();
 
     //drzewo puste
     if (pusty[1]==true)
@@ -104,7 +103,6 @@ void add()
                 znalazlem_miejsce=true;
                 dane[wezel]=liczba;
                 pusty[wezel]=false;
-
             }
             else if(liczba<dane[wezel])
             {
@@ -124,50 +122,43 @@ void add()
             }
         }
     }
-
 }
 
-void find()
+void find(vector <float> &dane, int &wezel, float &liczba)
 {
-    int liczba;
+    cin.clear();
+    cin.sync();
+    Wczytanie wartosc_szukana;
     cout<<"Jaka liczbe znalezc w drzewie: ";
-    cin>>liczba;
-
-    bool znalazlem=false;
-    int wezel=1;
-
-    while (znalazlem==false)
+    liczba=wartosc_szukana.wczytanie_wartosci();
+    for (int i=0; i<=wezel; i++)
     {
-        if(liczba==dane[wezel])
+        if(liczba==dane[i])
         {
-            cout<<"Znaleziono liczbe w wezle nr: "<<wezel;
+            cout<<"Znaleziono liczbe w wezle nr: "<<i;
             Sleep(3000);
-
-            znalazlem=true;
+            i=wezel+1;
         }
-        else if(liczba<dane[wezel])
-        {
-            //w lewo
-            wezel=2*wezel;
-        }
-        else
-        {
-            //w prawo
-            wezel=2*wezel+1;
-        }
-        if(wezel>15)
+        else if(i==wezel)
         {
             cout<<"Nie znaleziono!";
             Sleep(3000);
-            znalazlem=true;
         }
     }
 }
 
 
-//----------------------- G£OWNY PROGRAM ----------------------------
-int main()
+//----------------------- GLOWNY VOID ----------------------------
+void Drzewo_binarne::wyswietl()
 {
+    cin.clear();
+    cin.sync();
+    system("CLS");
+    Wczytanie wartosc_drzewo;
+    vector<float>dane(16);
+    vector<bool>pusty(15);
+
+
     for (int i=1; i<=15; i++)
     {
         pusty[i]=true;
@@ -176,7 +167,7 @@ int main()
 
     do
     {
-        wyswietl_drzewo();
+        wyswietl_drzewo(pusty, dane);
 
         cout<<"----------------------------------"<<endl;
         cout<<"   EMULATOR DRZEWA BINARNEGO "<<endl;
@@ -185,25 +176,37 @@ int main()
         cout<<"2. FIND (szuka elementu w drzewie)"<<endl;
         cout<<"3. EXIT (zakonczy ten program)"<<endl;
         cout<<"----------------------------------"<<endl;
-        cout<<"   WYBOR: ";
-        cin>>wybor;
-        cout<<endl;
 
-        switch(wybor)
+        switch(wartosc_drzewo.wybor_wartosci())
         {
         case 1:
-            add();
+            add(pusty, dane, wezel, liczba, korzen);
+            wybor=88;
             break;
         case 2:
-            find();
+            find(dane, wezel, liczba);
+            wybor=88;
             break;
+        case 3:
+            wybor=3;
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),12);
+            cout<<"Teraz nastapi powrot do MENU GLOWNEGO"<<endl;
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15);
+            cout<< endl <<"Aby kontynuowac nacisnij enter "<<endl;
+            getchar();
+            cin.clear();
+            cin.sync();
+            break;
+        default:
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),12);
+            cout<< "Nie ma takiej opcji w menu";
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15);
+            Sleep(1000);
+            wybor=99;
         }
-
     }
     while (wybor!=3);
-
-
-
-
-    return 0;
+    cin.clear();
+    cin.sync();
+    system("CLS");
 }

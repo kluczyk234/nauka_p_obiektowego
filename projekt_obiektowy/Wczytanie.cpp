@@ -7,6 +7,16 @@
 #include <conio.h>
 #include "Wczytanie.h"
 using namespace std;
+//snprintf
+//bool sprawdzam (float x)
+//{
+//    int i=0;
+//    while (x[i])
+//  {
+//    if (isalpha(x[i])==true)return false;
+//    else return true;
+//  }
+//}
 
 float Wczytanie::wczytanie_wartosci()
 {

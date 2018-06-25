@@ -10,7 +10,7 @@
 #include "stos.h"
 #include "Base.h"
 #include "kolejka.h"
-//#include "drzewo_binarne.h"
+#include "drzewo_binarne.h"
 
 using namespace std;
 
@@ -26,7 +26,7 @@ int main()
     Stos obiekt1;
     Lista obiekt2;
     Kolejka obiekt3;
-//    Drzewo obiekt4;
+    Drzewo_binarne obiekt4;
 
 //    obiekt.wyswietl();
     Wirtualna *wskaznik;
@@ -63,7 +63,7 @@ int main()
             break;
 
         case 4:
-            wskaznik = &obiekt1;
+            wskaznik = &obiekt4;
             obliczenia(wskaznik);
             break;
         case 5:

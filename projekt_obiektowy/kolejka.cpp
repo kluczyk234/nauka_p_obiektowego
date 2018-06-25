@@ -103,7 +103,7 @@ void Kolejka::wyswietl()
     do
     {
         wyswietl_kolejke(dane, glowa, ile);
-        cout<<"glowa="<<glowa<<"   ogon="<<ogon<<"   ile="<<ile<<endl<<endl;
+        //cout<<"glowa="<<glowa<<"   ogon="<<ogon<<"   ile="<<ile<<endl<<endl;
         cout << "MENU GLOWNE KOLEJKI:"<<endl;
         cout << "------------------------------------------"<<endl;
         cout << "1. PUSH (dodaje element na koniec kolejki) "<<endl;
